@@ -1,0 +1,1 @@
+Homework3(Book Eshop): This application represents an e-shop that sells different types of books: printed, digital, and audiobooks. The program displays a list of all available books with their details through a BookEshop class.

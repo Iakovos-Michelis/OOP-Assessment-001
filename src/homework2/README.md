@@ -1,0 +1,1 @@
+Homework2(Football League): This program tracks football game results. It allows users to add game results (home team, away team, goals), and view a specific team’s performance by calculating total wins, losses, and draws based on the recorded games.
