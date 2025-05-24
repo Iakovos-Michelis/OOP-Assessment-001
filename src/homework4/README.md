@@ -1,0 +1,1 @@
+Homework4(Coffee Shop Application): This application is a coffee shop order tracking system that allows users to add new orders, view orders by date, and calculate the total amount spent by a customer. Each order includes the customer's name, total amount paid, and the date.
