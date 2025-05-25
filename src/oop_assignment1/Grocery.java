@@ -6,7 +6,7 @@ public class Grocery extends Product {
     String ΕxpirationDate;
 
     public Grocery(String name, double price, double weight, String ExpirationDate) {
-        super(name, price); // Κλήση του κατασκευαστή της βασικής κλάσης oop_assignment1.Product
+        super(name, price);
         this.weight = weight;
         this.ΕxpirationDate = ExpirationDate;
     }

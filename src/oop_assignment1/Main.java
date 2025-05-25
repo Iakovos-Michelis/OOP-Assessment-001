@@ -16,12 +16,12 @@ public class Main {
 
         boolean running = true;
 
-        // oop_assignment1.Main menu loop
+        // Main menu loop
         while (running) {
             System.out.println("\n=== MENU ===");
-            System.out.println("1. Add oop_assignment1.Product");
-            System.out.println("2. Search oop_assignment1.Product");
-            System.out.println("3. Modify oop_assignment1.Product");
+            System.out.println("1. Add Product");
+            System.out.println("2. Search Product");
+            System.out.println("3. Modify Product");
             System.out.println("4. Exit");
             System.out.print("Choice: ");
 
@@ -30,34 +30,35 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.println("You chose: Add oop_assignment1.Product");
-                    addProduct(scanner, productList); // User chose to add a product
+                    System.out.println("You chose: Add Product");
+                    addProduct(scanner, productList);
                     break;
                 case 2:
-                    System.out.println("You chose: Search oop_assignment1.Product");
-                    searchProduct(scanner, productList); // User chose to search for a product
+                    System.out.println("You chose: Search Product");
+                    searchProduct(scanner, productList);
                     break;
                 case 3:
-                    System.out.println("You chose: Modify oop_assignment1.Product");
-                    modifyProduct(scanner, productList); // User chose to modify a product
+                    System.out.println("You chose: Modify Product");
+                    modifyProduct(scanner, productList);
                     break;
                 case 4:
                     System.out.println("Exiting the program.");
-                    running = false; // Exit the program
+                    running = false;
                     break;
                 default:
-                    System.out.println("Invalid choice. Try again."); // Invalid input
+                    System.out.println("Invalid choice. Try again.");
             }
         }
 
-        scanner.close(); // Close the scanner when done
+        scanner.close();
     }
+
     // Add a new product to the list
     public static void addProduct(Scanner scanner, ArrayList<Product> productList) {
         System.out.println("Select product category: ");
-        System.out.println("1. oop_assignment1.Electronics");
-        System.out.println("2. oop_assignment1.Grocery");
-        System.out.println("3. oop_assignment1.Clothing");
+        System.out.println("1. Electronics");
+        System.out.println("2. Grocery");
+        System.out.println("3. Clothing");
         System.out.print("Choice: ");
 
         int categoryChoice = scanner.nextInt(); // Read the category choice
@@ -104,7 +105,7 @@ public class Main {
 
         if (NewProduct != null) {
             productList.add(NewProduct); // Adding the new product to the list
-            System.out.println("oop_assignment1.Product added successfully!");
+            System.out.println("Product added successfully!");
         }
     }
     // Search for a product by name
@@ -121,7 +122,7 @@ public class Main {
             }
         }
         if (!found) {
-            System.out.println("oop_assignment1.Product not found.");
+            System.out.println("Product not found.");
         }
     }
 
