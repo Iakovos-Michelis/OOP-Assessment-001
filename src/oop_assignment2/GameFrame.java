@@ -10,10 +10,10 @@ public class GameFrame extends JFrame {
     private JTextField guessField;
     private JLabel wordLabel, wrongGuessesLabel, resultLabel;
     private JButton guessButton, tryAgainButton, logoutButton;
-    private User User;
+    private User user;
 
-    public GameFrame(User User) {
-        this.User = User;
+    public GameFrame(User user) {
+        this.user = user;
         setTitle("Hangman Game");
         setSize(400, 300);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -30,12 +30,10 @@ public class GameFrame extends JFrame {
 
         getContentPane().removeAll();
 
-        // Panel creation
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(7, 1, 10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        // Show word
         wordLabel = new JLabel(game.getDisplayWord());
         wordLabel.setFont(new Font("Arial", Font.PLAIN, 24));
         panel.add(wordLabel);
@@ -43,31 +41,27 @@ public class GameFrame extends JFrame {
         guessField = new JTextField();
         panel.add(guessField);
 
-        // Guess button
         guessButton = new JButton("Guess Letter");
         guessButton.addActionListener(new GuessButtonListener());
         panel.add(guessButton);
 
-        // Show wrong guesses
         wrongGuessesLabel = new JLabel("Wrong guesses: 0");
         panel.add(wrongGuessesLabel);
 
-        // Result message
         resultLabel = new JLabel("");
         panel.add(resultLabel);
 
-        // Try again button
         tryAgainButton = new JButton("Try Again");
         tryAgainButton.setVisible(false);
         tryAgainButton.addActionListener(e -> startNewGame());
         panel.add(tryAgainButton);
 
-        // Logout button
         logoutButton = new JButton("Logout");
         logoutButton.setVisible(false);
         logoutButton.addActionListener(e -> {
+            Database.updateScore(user);
             dispose();
-            new Login();
+            new Leaderboard();
         });
         panel.add(logoutButton);
 
@@ -92,7 +86,6 @@ public class GameFrame extends JFrame {
                     wrongGuessesLabel.setText("Wrong guesses: " + game.getWrongGuesses());
                 }
 
-                // Check if the game is won
                 if (game.isWon()) {
                     resultLabel.setText("You won! The word was: " + game.getOriginalWord());
                     endGame();
@@ -111,6 +104,10 @@ public class GameFrame extends JFrame {
         guessField.setEnabled(false);
         guessButton.setEnabled(false);
 
+        if (game.isWon()) {
+            user.addScore(1);
+            Database.updateScore(user);
+        }
         tryAgainButton.setVisible(true);
         logoutButton.setVisible(true);
     }
